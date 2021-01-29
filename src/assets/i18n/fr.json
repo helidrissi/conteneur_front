@@ -1,0 +1,84 @@
+{
+    "Commun": {
+        "Connexion": "Connexion",
+        "Deconnexion": "Se déconnecter",
+        "Sauvegarder": "Sauvegarder",
+        "Quitter": "Quitter",
+        "Telecharger": "Télécharger"
+    },
+    "Login": {
+        "Identification": "Identification",
+        "Email": "Email",
+        "EmailRequis": "Ce champ nécessite une adresse email valide",
+        "EmailErreur": "Ce champ est obligatoire",
+        "Mdp": "Mot de passe",
+        "Env": "Environnement",
+        "Imp": "Imprimante",
+        "Soc": "Société",
+        "LoginRequis": "Ce champ doit contenir 6 caractères minimum",
+        "LoginErreur": "Ce champ est obligatoire",
+        "SelectLang": "Choissisez la langue :",
+        "Choix": "Choissisez une langue",
+        "Envir": "Choissisez votre Environement",
+        "Prod": "Production",
+        "Jeu": "Jeu d'essai",
+        "Archive": "Archive",
+        "Lang1": "Français",
+        "Lang2": "Anglais",
+        "PwdMissed": "Mot de passe oublié"
+    },
+    "SideBar": {
+        "Titre": "S@PHIR",
+        "ChangeLang": "Changez la langue :",
+        "Accueil": "Accueil",
+        "Gestion Commerciale": "Gestion Commerciale",
+        "Comptabilité Camargue": "Comptabilité Camargue",
+        "Trad": "Traduction",
+        "Espace": "Espace de Travail",
+        "Sub7": "Administration",
+        "Sub8": "Gestion des thèmes",
+        "Sub9": "Gestion des utilisateurs",
+        "OpenContactUs": "Nous contacter",
+        "OpenInfo": "Info",
+        "OpenAide": "Aide",
+        "TitreModal": "Nous contacter",
+        "SupportMistral": "support.mistral.fr",
+        "TitreCommercial": "COMMERCIAL ET ADMINISTRATIF :",
+        "InfoMistral": "info@mistral.fr",
+        "MailAdminMistral": "admin@mistral.fr",
+        "SiteMistral": "mistral.fr",
+        "TitreHotline": "HOTLINE :",
+        "PageAide": "Aide",
+        "Copyright": "Copyright © Mistral/Equipe S@PHIR",
+        "TitreModalAvatar": "Modifiez votre avatar",
+        "TitreModalLogo": "Modifiez votre logo"
+    },
+    "Accueil": {
+        "Plus": "Plus...",
+        "Moins": "Moins..."
+    },
+
+    "FormUser": {
+        "Email": "Email",
+        "EmailRequis": "Ce champ nécessite une adresse email valide",
+        "EmailErreur": "Ce champ est obligatoire",
+        "Mdp": "Mot de passe",
+        "LoginRequis": "Ce champ doit contenir 6 caractères minimum",
+        "LoginErreur": "Ce champ est obligatoire",
+        "titre": "Ajout Utilisateur",
+        "Fname": "Prenom",
+        "Lname": "Nom",
+        "save": "Enregistrement avec succès",
+        "submit": "Soumettre"
+
+
+    },
+
+    "Administration": {
+        "Administration": "Administration",
+        "TitreGalons": "Couleur des galons :",
+        "TitreSociete": "Societe",
+        "TitreAgence": "Agence"
+    }
+
+}

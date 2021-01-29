@@ -1,0 +1,240 @@
+.accueil {
+    --scrollbar-thumb-color: #0c2a77;
+    --scrollbar-border-radius: 4px;
+}
+
+.content {
+    margin-top: 40px;
+}
+
+.btnCacher {
+    visibility: hidden;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+#logoMistral {
+    /*background-color: #f8f9fa;*/
+    width: 20%;
+    margin-left: 40%;
+    margin-bottom: 3%;
+}
+
+
+/* ---------------------------------------------------
+    Btn ajout image dans carousel
+----------------------------------------------------- */
+
+.import {
+    z-index: 20;
+    position: absolute;
+    margin-left: 4%;
+}
+
+.btnAddImg,
+.btnUploadImg {
+    background-color: #154194;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    padding: 3px 5px 3px 5px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+#iconUpload {
+    margin-left: 5px !important;
+}
+
+input {
+    border-bottom: 1px solid gainsboro;
+    margin-left: 15px;
+    background-color: transparent;
+    border: 0px solid transparent;
+}
+
+.inputfile {
+    padding-top: 5px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.btnAddImg:hover,
+.btnUploadImg:hover {
+    box-shadow: 0px 3px 8px white;
+}
+
+.progress {
+    border: solid black 1px;
+}
+
+.alert-success {
+    margin-right: 13px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3.25px;
+    width: max-content;
+}
+
+
+/* ---------------------------------------------------
+    Carousel
+----------------------------------------------------- */
+
+#carouselExampleIndicators {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 4%;
+}
+
+.carousel-caption {
+    height: 365px;
+}
+
+.carousel-inner {
+    height: 300px;
+}
+
+.carousel-inner:hover {
+    cursor: pointer;
+}
+
+.carousel-item {
+    max-height: 600px;
+    min-height: 141px;
+}
+
+.carousel-inner.active {
+    height: auto;
+}
+
+.custom-file-label::after {
+    content: "Parcourir";
+}
+
+.custom-file-label:hover {
+    cursor: pointer;
+    color: black;
+    box-shadow: 0px 3px 8px white;
+}
+
+.carousel-inner.active:hover {
+    cursor: pointer;
+}
+
+.carousel-caption.active {
+    height: auto;
+}
+
+.carousel-item>img {
+    position: relative;
+    top: -300px;
+}
+
+.carousel-indicators li {
+    width: 80px;
+    height: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.carousel-caption h5 {
+    color: #5bc5f1;
+    font-weight: bold;
+}
+
+.btnDeployer,
+.btnCacher {
+    background-color: #0c2a77;
+    color: white;
+    width: 126px;
+    height: 25px;
+    border-radius: 3.25px;
+    border: 0;
+    font-size: 14px;
+    padding: 0px 5px 0px 5px;
+    margin: 0 0 5px 0;
+}
+
+.btnDeployer:hover,
+.btnCacher:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.288);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card-text {
+    display: none;
+}
+
+.groupeCard {
+    margin: auto;
+}
+
+.card {
+    margin: 0 25px 25px 25px;
+    max-width: 100%;
+    height: min-content;
+    min-width: 165px;
+}
+
+.card.active {
+    resize: both;
+    overflow: auto;
+    height: max-content;
+}
+
+.card-img-top {
+    width: 30%;
+    margin: 10px auto 10px auto;
+    background-color: white;
+}
+
+.card-body {
+    overflow: auto;
+}
+
+#widget_autocomplete_preview {
+    width: -moz-available;
+}
+
+#save {
+    background-color: #0c2a77;
+    color: white;
+    border: none;
+    position: relative;
+    width: 40%;
+    height: 30px;
+    left: 30%;
+    top: -10px;
+    border-radius: 3.25px;
+    margin: 10px 0 10px 0;
+}
+
+#save:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.288);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fa-save {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.env {
+    background-color: red;
+}

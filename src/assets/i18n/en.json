@@ -1,0 +1,83 @@
+{
+    "Commun": {
+        "Connexion": "Login",
+        "Deconnexion": "Logout",
+        "Sauvegarder": "Save",
+        "Quitter": "Exit",
+        "Telecharger": "Upload"
+    },
+    "Login": {
+        "Identification": "Identification",
+        "Email": "Email",
+        "EmailRequis": "This field requires a valid email address",
+        "EmailErreur": "This field is required",
+        "Mdp": "Password",
+        "LoginRequis": "This field must contain 6 characters minimum",
+        "LoginErreur": "This field is required",
+        "SelectLang": "Choose your language :",
+        "Choix": "Choose a language",
+        "Envir": "Choose your Environment",
+        "Prod": "Production",
+        "Jeu": "Copy Prod",
+        "Archive": "Archive",
+        "Lang1": "French",
+        "Lang2": "English",
+        "Env": "Environment",
+        "Imp": "Printer",
+        "Soc": "Company",
+        "PwdMissed": "Forgot your password"
+    },
+    "SideBar": {
+        "Titre": "S@PHIR",
+        "ChangeLang": "Change your language :",
+        "Accueil": "Home",
+        "Gestion Commerciale": "Business management",
+        "Comptabilité Camargue": "Camargue accounting",
+        "Trad": "Translation",
+        "Espace": "Workspace",
+        "Sub7": "Administration",
+        "Sub8": "Theme management",
+        "Sub9": "Users management",
+        "OpenContactUs": "Contact us",
+        "OpenInfo": "Info",
+        "OpenAide": "Help",
+        "TitreModal": "Contact us",
+        "SupportMistral": "support.mistral.fr",
+        "TitreCommercial": "COMMERCIAL AND ADMINISTRATIVE :",
+        "InfoMistral": "info@mistral.fr",
+        "MailAdminMistral": "admin@mistral.fr",
+        "SiteMistral": "mistral.fr",
+        "TitreHotline": "HOTLINE :",
+        "PageAide": "Help",
+        "Copyright": "Copyright © Mistral/Team S@PHIR",
+        "TitreModalAvatar": "Edit your avatar",
+        "TitreModalLogo": "Edit your logo"
+    },
+    "Accueil": {
+        "Plus": "More...",
+        "Moins": "Less..."
+    },
+
+    "FormUser": {
+        "Email": "Email",
+        "EmailRequis": "This field requires a valid email address",
+        "EmailErreur": "This field is required",
+        "Mdp": "Password",
+        "LoginRequis": "This field must contain 6 characters minimum",
+        "LoginErreur": "This field is required",
+        "titre": "Add User",
+        "Fname": "First Name",
+        "Lname": "Last Name",
+        "save": "Successful registration",
+        "submit": "Submit"
+    },
+
+    "Administration": {
+        "Administration": "Administration",
+        "TitreGalons": "Color of the stripes:",
+        "TitreSociete": "Society",
+        "TitreAgence": "Agency"
+    }
+
+
+}

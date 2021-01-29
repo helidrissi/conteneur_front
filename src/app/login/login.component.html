@@ -1,0 +1,98 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="bg1"></div>
+<div class="bg2"></div>
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="">
+                <div class="logo" style="text-align: center"><img src="assets/logo.png" alt="Logo" width="220" height="55" /></div>
+            </div>
+            <div class="">
+                <div class="num3"></div>
+            </div>
+            <div class="trait">
+                <hr>
+            </div>
+            <div class="">
+                <div class="logodl"><img src="assets/Logo1.jpg" alt="Logo DLRIX" class="image" /></div>
+                <div class="logomg" style="margin-top: -55px;"><img src="assets/Logo2.gif" alt="Image accueil 2" class="image" /></div>
+            </div>
+            <h3 class="text-center titre" id="title">{{"Login.Identification" | translate}}</h3>
+            <div style="padding-top:30px" class="panel-body x">
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                <div class="sl-nav choixL">
+                    <ul>
+                        <li><strong>{{"Login.SelectLang" | translate}} </strong> {{lgn}} <b class="{{class}}"> </b> <i class="" aria-hidden="true"></i>
+                            <div class="triangle"></div>
+                            <ul>
+                                <li><i class="sl-flag flag-fr" (click)="useLanguage('fr')"></i> <span class="active"><a
+                                            (click)="useLanguage('fr')">{{"Login.Lang1" | translate}}</a></span></li>
+                                <li><i class="sl-flag flag-eng" (click)="useLanguage('en')"></i> <span><a
+                                            (click)="useLanguage('en')">{{"Login.Lang2" | translate}}</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <form id="loginform" class="form-horizontal language" role="form" [formGroup]="formLogin" (ngSubmit)="login()">
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input formControlName="email" id="login-username" type="text" class="form-control" name="username" value="" placeholder='{{"Login.Email" | translate}}'>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="formLogin.get('email').invalid && (formLogin.get('email').touched || formLogin.get('email').dirty) ">
+                        <div *ngIf="formLogin.get('email').getError('required')">{{"Login.EmailRequis" | translate}}
+                        </div>
+                        <div *ngIf="formLogin.get('email').getError('email')">{{"Login.EmailErreur" | translate}}</div>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" formControlName="password" type="password" class="form-control" name="password" placeholder='{{"Login.Mdp" | translate}}'>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="formLogin.get('password').invalid && (formLogin.get('password').touched || formLogin.get('password').dirty  )">
+                        <div *ngIf="formLogin.get('password').getError('required')">{{"Login.LoginRequis" | translate}}
+                        </div>
+                        <div *ngIf="formLogin.get('password').getError('minlength')">{{"Login.LoginErreur" | translate}}
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <select class="form-control" formControlName="envir">
+
+                            <!-- <option *ngFor="let prf of env"  [ngValue]="prf.name">  {{ prf.libelle }}</option> -->
+                            <option value="prod"> {{"Login.Prod" | translate}}</option>
+                            <option value="preprod"> {{"Login.Jeu" | translate}}</option>
+                            <option value="test">{{"Login.Archive" | translate}}</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <!-- <input id="login-password" type="societe" class="form-control" name="societe" placeholder='{{"Login.Soc" | translate}}'> -->
+                        <select class="form-control" formControlName="company">
+
+                            
+
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-print"></i></span>
+                        <input id="login-password" type="imprimante" class="form-control" name="imprimante" placeholder='{{"Login.Imp" | translate}}'>
+                    </div>
+                    <div class="col-lg-12 login-btm login-button">
+                        <button [disabled]="formLogin.invalid" type="submit" class="btn  btn-success "><i
+                                class="fas fa-sign-in-alt"></i> {{"Commun.Connexion" | translate}}</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 control pwdo">
+                            <a routerLink="/reset" onClick="$('#loginbox').hide(); $('#signupbox').show()">{{"Login.PwdMissed" |
+                                translate}}?</a>
+                        </div>
+                    </div>
+                    <span class="error">{{errorMessage}}</span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

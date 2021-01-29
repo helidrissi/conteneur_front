@@ -1,0 +1,234 @@
+<div class="content">
+    <div class="row wb">
+        <div class="example-header">
+          <mat-form-field appearance="outline">
+            <mat-label>Rechercher</mat-label>
+            <input matInput placeholder="Placeholder" id="reche" (keyup)="applyFilter($event.target.value)">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4" >
+          <div class="col-auto wmt">
+            <button style="float: right;" (click)="create()" mat-raised-button color="primary" class="btn btn-primary"
+                    [style.background-color]="'--corporate500'">{{"FormUser.creer" | translate}}</button>
+          </div>
+        </div>
+      </div>
+<div class="row">
+    <div class="col">
+      <div class="example-container">
+       
+        <mat-table #table [dataSource]="dataSource" matSort>
+       
+          <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Prénom</mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
+          </ng-container>
+
+         
+          <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nom</mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+          </ng-container>
+
+          
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email</mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.email}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let user; columns: displayedColumns;" (click)="didSelectRow(user)">
+          </mat-row>
+        </mat-table>
+      
+         <mat-paginator [pageSize]="5" ></mat-paginator> 
+        
+         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+      </div>
+    </div>
+    <div class="col wb">
+      <div class="container form" style="margin-top: 0px;">
+
+        <form [formGroup]="formGroup">
+           <fieldset>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-5 wmp">
+                  <legend><h5>{{"FormUser.titre" | translate}}</h5></legend>
+                </div>
+
+                <div class="col-auto wmt">
+                 <div class="row">
+              
+                  <div class="col">
+                  <button (click)="save()" mat-raised-button color="primary" [disabled]="formGroup.invalid" class="btn btn-primary"
+                          *ngIf="envir =='prod'"
+                          [style.background-color]="'#f1ba5b'">{{"FormUser.enregistrer" | translate}}</button>
+                  <button (click)="save()" mat-raised-button color="primary" [disabled]="formGroup.invalid" class="btn btn-primary"
+                          *ngIf="envir =='preprod'"
+                          [style.background-color]="'orange'">{{"FormUser.enregistrer" | translate}}</button>
+                  <button (click)="save()" mat-raised-button color="primary" [disabled]="formGroup.invalid" class="btn btn-primary"
+                          *ngIf="envir =='test' "
+                          [style.background-color]="'grey'">{{"FormUser.enregistrer" | translate}}</button>
+                  </div>
+             
+                 </div>
+                </div>
+              </div>
+            </div>
+
+
+         
+            <table class="full-width" cellspacing="0">
+              <td>
+              <tr>
+                
+           
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <label for="lastName">{{"FormUser.Lname" | translate}}</label>
+                    <input formControlName="lastName" type="text" class="form-control" id="lastName" name="lastName"
+                           placeholder='{{"FormUser.Lname" | translate}}'>
+                  </div>
+                </td>
+     
+
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group">
+                    <label for="firstName">{{"FormUser.Fname" | translate}}</label>
+                    <input formControlName="firstName" type="text" class="form-control" id="firstName" name="firstName"
+                           placeholder='{{"FormUser.Fname" | translate}}'>
+                  </div>
+                </td>
+               
+
+              </tr>
+              <tr>
+                <td>
+                 
+                  <div class="input-group">
+                    <label for="email">{{"FormUser.Email" | translate}}</label>
+                    <input formControlName="email" type="text" class="form-control" id="email" name="email"
+                           aria-describedby="emailHelp" placeholder='{{"FormUser.Email" | translate}}'>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="!selectedElement">
+              <td>
+                <div class="input-group">
+                  <label for="password">{{"FormUser.Mdp" | translate}}</label>
+                  <input formControlName="password" type="text" class="form-control" id="password" name="password"
+                         placeholder='{{"FormUser.Mdp" | translate}}' [type]="fieldTextType ? 'text' : 'password'" >
+                  <div class="input-group-append">
+                <span class="input-group-text">
+                  <i
+                    class="fa"
+                    [ngClass]="{
+                      'fa-eye-slash': !fieldTextType,
+                      'fa-eye': fieldTextType
+                    }"
+                    (click)="toggleFieldTextType()"
+                  ></i>
+                </span>
+                  </div>
+                </div>
+              </td>
+              </tr>
+           
+
+               
+
+           
+
+
+              </td>
+              <td>
+
+                    <div class="input-group">
+                      <h4>{{"FormUser.droitsutilisateur" | translate}}</h4>
+                    </div>
+
+                    <!-- <div class="input-group">
+                      <mat-checkbox formControlName="visaFormation" id="visaFormation" name="visaFormation">{{"FormUser.visaform" | translate}}</mat-checkbox>
+                    </div>
+
+                    <div class="input-group">
+                      <mat-checkbox formControlName="visaInstallation" id="visaInstallation" name="visaInstallation">{{"FormUser.visainstall" | translate}}</mat-checkbox>
+                    </div>
+
+                    <div class="input-group">
+                      <mat-checkbox formControlName="visaAbsence" id="visaAbsence" name="visaAbsence">{{"FormUser.visaabs" | translate}}</mat-checkbox>
+                    </div>
+
+                    <div class="input-group">
+                      <mat-checkbox formControlName="visaPost" id="visaPost" name="visaPost">{{"FormUser.visapost" | translate}}</mat-checkbox>
+                    </div>
+
+                    <div class="input-group">
+                      <mat-checkbox formControlName="admin" id="admin" name="admin">{{"FormUser.admin" | translate}}</mat-checkbox>
+                    </div>
+
+                    <div class="input-group">
+                      <h4>{{"FormUser.bondepreparaion" | translate}}</h4>
+                    </div> -->
+
+                   
+              </td>
+            </table> 
+
+            <ng-container
+              *ngIf="formGroup.get('email').invalid && (formGroup.get('email').touched || formGroup.get('email').dirty) ">
+               
+                <ng-container *ngIf="formGroup.get('email').getError('email')">
+                  <div class="alert alert-danger">
+                  <div>{{"FormUser.EmailErreur" | translate}}</div>
+                  </div>
+                </ng-container>
+
+            </ng-container>
+
+
+            <ng-container
+              *ngIf="formGroup.get('password').invalid && (formGroup.get('password').touched || formGroup.get('password').dirty  )">
+              
+                <ng-container *ngIf="formGroup.get('password').getError('minlength')">
+                  <div class="alert alert-danger">
+                  <div>{{"FormUser.MdpNbcError" | translate}}</div>
+                  </div>
+                </ng-container>
+            </ng-container>
+
+
+            <ng-container *ngIf="formSuccessMsg">
+              <div>
+                <div class="col-xs-12">
+                  <p class="alert alert-success">
+                    <strong>{{"FormUser.save" | translate}} !!!</strong>
+
+                  </p>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="formErrorMsg">
+              <div>
+                <div class="col-xs-12">
+                  <p class="alert alert-danger">
+                    <strong>{{formErrorMsg}} !!!</strong>
+
+                  </p>
+                </div>
+              </div>
+            </ng-container>
+          </fieldset> 
+        </form> 
+      </div>
+
+
+    </div>
+  </div>
+</div>

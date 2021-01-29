@@ -1,0 +1,63 @@
+<div class="content">
+    <h3>{{"Administration.Administration" | translate}}</h3>
+    <hr class="hrTitle">
+    <form class="md-form" [formGroup]="formSociete" (ngSubmit)="patchColorS()">
+      
+        <fieldset>
+            <legend class="titreChevrons">Couleur des galons :</legend>
+            <div *ngIf="userInfos.roles.includes('ADMIN')"  class="form-group">
+                <div class="societe">
+                    <h5>Societe</h5>
+                    <input id="galonSociete" type=color value="#ff0000" formControlName="color">
+                </div>
+               
+            </div>
+           
+            <!-- <button type="submit" class="btnSave btn-primary">Sauvegarder</button> -->
+        </fieldset>
+        <div class="btnHeader">
+            <button type="submit" class="btnSave btn-primary">Sauvegarder</button>
+        </div>
+    </form>
+    <form class="md-form" [formGroup]="formAgence" (ngSubmit)="patchColorA()">
+       
+        <fieldset>
+            <legend class="titreChevrons">Couleur des galons :</legend>
+            <div *ngIf="userInfos.roles.includes('ADMIN')"  class="form-group">
+             
+                <div class="agence">
+                    <h5>Agence</h5>
+                    <input id="galonAgence" type=color value="#ff0000" formControlName="color">
+                </div>
+            </div>
+           
+            <!-- <button type="submit" class="btnSave btn-primary">Sauvegarder</button> -->
+        </fieldset>
+        <div class="btnHeader">
+            <button type="submit" class="btnSave btn-primary">Sauvegarder</button>
+        </div>
+    </form>
+
+    <!-- Animation -->
+    <div id="myname">
+        <p class="small-caps">
+            <span id="layer0Go" class="drag"><img src="../../assets/image/imageAnimation/head.png" width="20px" height="20px"></span>
+            <span id="layer1Go" class="drag">T</span>
+            <span id="layer2Go" class="drag">S</span>
+            <span id="layer3Go" class="drag">I</span>
+            <span id="layer4Go" class="drag"><img src="../../assets/image/imageAnimation/M.png" width="15px" height="15px"></span>
+            <span id="layer5Go" class="drag">R</span>
+            <span id="layer6Go" class="drag">A</span>
+            <span id="layer7Go" class="drag">L</span>
+            <span id="layer8Go" class="drag">‼</span>
+            <span id="layer9Go" class="drag">‼</span>
+            <span id="layer10Go" class="drag">‼</span>
+            <span id="layer11Go" class="drag">=</span>
+            <span id="layer12Go" class="drag">‼</span>
+            <span id="layer13Go" class="drag">‼</span>
+            <span id="layer14Go" class="drag">=</span>
+            <span id="layer15Go" class="drag ball"></span>
+        </p>
+    </div>
+    <!-- Animation -->
+</div>

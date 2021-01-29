@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: "Muli";
+    src: local("assets/font/Muli/Muli-Light.ttf"), url("assets/font/Muli/Muli-Light.ttf");
+}
+
+* {
+    font-size: 14px;
+    font-family: "Muli", Calibri, Tahoma, Arial, serif;
+}
+
+:root {
+    --corporate50: #e3e8f2;
+    --corporate100: #b9c6df;
+    --corporate200: #8aa0ca;
+    --corporate300: #5b7ab4;
+    --corporate400: #385ea4;
+    --corporate500: #154194;
+    --corporate600: #123b8c;
+    --corporate700: #0f3281;
+    --corporate800: #0c2a77;
+    --corporate900: #061c65;
+    --corporateA100: #96a8ff;
+    --corporateA200: #637eff;
+    --corporateA400: #3054ff;
+    --corporateA700: #163fff;
+    --corporate-light50: #ebf8fd;
+    --corporate-light100: #ceeefb;
+    --corporate-light200: #ade2f8;
+    --corporate-light300: #8cd6f5;
+    --corporate-light400: #74cef3;
+    --corporate-light500: #5bc5f1;
+    --corporate-light600: #53bfef;
+    --corporate-light700: #49b8ed;
+    --corporate-light800: #40b0eb;
+    --corporate-light900: #2fa3e7;
+    --corporate-lightA100: #ffffff;
+    --corporate-lightA200: #f6fbff;
+    --corporate-lightA400: #c3e8ff;
+    --corporate-lightA700: #a9deff;
+
+    --orange50: #fff3e0;
+    --orange100: #ffe0b2;
+    --orange200: #ffcc80;
+    --orange300: #ffb74d;
+    --orange400: #ffa726;
+    --orange500: #ff9800;
+    --orange600: #fb8c00;
+    --orange700: #f57c00;
+    --orange800: #ef6c00;
+    --orange900: #e65100;
+    --orangeA100: #ffd180;
+    --orangeA200: #ffab40;
+    --orangeA300: #ff9100;
+    --orangeA700: #ff6d00;
+    
+    --red50: #FFEBEE;
+	--red500: #F44336;
+	--red700: #D32F2F;
+    --red900: #B71C1C;
+    
+    --green50:  #E8F5E9;
+	--green100: #C8E6C9;
+	--green200: #A5D6A7;
+	--green300: #81C784;
+	--green400: #66BB6A;
+	--green500: #4CAF50;
+	--green600: #43A047;
+	--green700: #388E3C;
+	--green800: #2E7D32;
+    --green900: #1B5E20;
+    
+    --pif300: #ff8b83;
+}
+
+/* Chrome/Edge/Safari */
+
+/* *::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #0c2a77;
+    border-radius: 5px;
+    border: 0px solid transparent;
+    opacity: 0.2;
+} */

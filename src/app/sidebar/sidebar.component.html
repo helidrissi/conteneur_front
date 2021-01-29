@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <div *ngIf="currentuser && envir =='prod' " [style.background-color]="'#0c2a77'">
+            <nav *ngIf="envir =='prod' " id="sidebar" [style.background-color]="'#0c2a77'">
+                <div class="sidebar-header" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'">
+                    <h2 ><img class="gifSaphir" src="{{retrievedImageM}}" alt="Image du logo" (click)=" userInfos.roles.includes('ADMIN') && open(mymodal3)" /></h2>
+                    <p>{{cst}}</p> <!-- *ngIf="userInfos.roles.includes('ADMIN')" -->
+                    <!-- Modal logo -->
+                    <div >
+                    <ng-template #mymodal3 let-modal >
+                        <div class="modalAvatar"  >
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="titleAvatar">{{"SideBar.TitreModalLogo" | translate}}</h4>
+                            </div>
+                            <div type="button" class="closeModal" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                            </div>
+                            <div type="button" class="btn closeModal" (click)="modal.close('Save click')">{{"Commun.Sauvegarder" | translate}}</div>
+                        </div>
+
+                        <form class="import md-form" >
+                            <div class="file-field">
+                                <div class="input-group ">
+                                    <div class="custom-file">
+                                        <label class="file-label">
+                                            <input class="inputfile file-path validate" id="inputGroupFile01" type="file" name="file" #fileInput (change)="onChangeLogo(fileInput.files[0])"/>
+                                            <label class="custom-file-label" for="inputGroupFile01">
+                                                <span class="file-cta">
+                                                    <span class="file-icon">{{ fileName }}<fa-icon id="iconUploadAvatar" [icon]="['fas', 'upload']"></fa-icon></span>
+                                                </span>
+                                            </label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 
+                            <div class="field" *ngIf="!infoMessage">
+                                <div class="control">
+                                    <progress class="progress is-primary" [attr.value]="progress" max="100"></progress>
+                                </div>
+                            </div> -->
+                            <div class="field">
+                                <div class="control">
+                                    <button class="btnUploadImg button is-primary" (click)="onUploadLogo()">{{"Commun.Telecharger" | translate}}</button>
+                                </div>
+                            </div>
+                            <article class="message" *ngIf="infoMessage">
+                                <div class="alert-success">{{ infoMessage }}</div>
+                            </article>
+                            <div class="ApercuImage">
+                                <figure class="image is-128x128">
+                                    <img src="{{retrievedImageM}}" alt="Image du logo" />
+                                </figure>
+                            </div>
+                        </form>
+
+                        <div class="modal-footer" >
+                            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Enregistrer</button>
+                        </div>
+                    </ng-template>
+                    </div>
+
+                </div>
+
+                <!-- Modal -->
+
+
+
+                <ul class="list-unstyled components" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'">
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    <div class="sl-nav choixL">
+                        <ul>
+                            <li>{{"SideBar.ChangeLang" | translate}} {{lgn}} <b class="{{class}}"> </b> <i class="" aria-hidden="true"></i>
+                                <div class="triangle"></div>
+                                <ul>
+                                    <li class="choixLang"><i class="sl-flag flag-fr" (click)="changeLanguage('fr')"></i> <span class="active"><a (click)="changeLanguage('fr')">{{"Login.Lang1" | translate}}</a></span></li>
+                                    <li class="choixLang"><i class="sl-flag flag-eng" (click)="changeLanguage('en')"></i> <span><a (click)="changeLanguage('en')">{{"Login.Lang2" | translate}}</a></span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <li *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'">
+                        <a routerLink="/accueil">
+                            <i class="fa fa-home"></i> {{"SideBar.Accueil" | translate}}
+                        </a>
+
+              
+                        <!-- <a routerLink="/parametre">
+                            <i class="fas fa-user"></i> {{"SideBar.Sub7" | translate}}
+                        </a> -->
+                        <a  *ngIf="userInfos.roles.includes('ADMIN')" href="#Administration" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-user"></i> {{"SideBar.Sub7" | translate}}
+                        </a>
+                        <ul class="collapse list-unstyled" id="Administration">
+                            <li>
+                                <a routerLink="/parametre"> {{"SideBar.Sub8" | translate}}</a>
+                            </li>
+                            <li>
+                                <a routerLink="/users"> {{"SideBar.Sub9" | translate}}</a>
+                            </li>
+                          
+                         
+
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+                <p id="titreContact" data-target="#exampleModal" data-toggle="modal"><i class="fas fa-address-book"></i>{{"SideBar.OpenInfo" | translate}}</p>
+
+                <button class="btn-aide" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="open(modalAide)"><i
+                        class="fa fa-question-circle"></i>{{"SideBar.PageAide" | translate}}</button><br><br>
+                <!-- <button class="btn-aide" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'"><i
+                        class="fa fa-info-circle"></i>{{"SideBar.OpenInfo" | translate}}</button> -->
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="contactHeader">
+                                <div class="contactTitle">
+                                    <h5 id="h5Contact"> </h5>
+                                    <div type="button" class="closeContact" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                                    </div>
+                                </div>
+                                <ul class="commercial">
+                                    <li id="premiereLigne">
+
+                                        <a class="lienContact" id="supportMistral" target="_blank">Postgresql 12.3</a>
+                                    </li>
+                                </ul>
+                                <div class="contactBar"></div>
+                            </div>
+                            <ul class="commercial"><span>Backend & Frontend</span>
+                                <li>
+                                    Java 11.0.7
+                                </li>
+                                <li>
+                                    Spring boot 2.3.1</li>
+                                <li>
+                                    Angular 10.0
+                                </li>
+                                <li>Bootsrap 4.5.2
+                                </li>
+
+                            </ul>
+                            <div class="contactSubBar"></div>
+                            <ul *ngIf="userInfos.admin" class="hotline"><span>3G</span>
+                                <li>
+                                    DLRIX 5.2.0
+                                </li>
+
+                            </ul>
+
+                            <div *ngIf="!userInfos.admin" [style.marginTop.px]="269">
+                                <div class="bp" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'">
+                                    <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                                </div>
+                            </div>
+                            <div *ngIf="userInfos.admin" [style.marginTop.px]="185">
+                                <div class="bp" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'">
+                                    <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <p id="titreContact" data-target="#exampleModal1" data-toggle="modal"><i class="fas fa-address-book"></i>{{"SideBar.OpenContactUs" | translate}}</p>
+                <div class="imageTheme"><img src="../../assets/image/ImageTheme/RecetteGalette.png" alt="Image theme du moment" (click)="openImageTheme(modalTheme)"></div>
+                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="contactHeader">
+                                <div class="contactTitle">
+                                    <h5 id="h5Contact">{{"SideBar.OpenContactUs" | translate}}</h5>
+                                    <div type="button" class="closeContact" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                                    </div>
+                                </div>
+                                <ul class="commercial">
+                                    <li id="premiereLigne">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <a class="lienContact" id="supportMistral" href="https://support.mistral.fr" target="_blank">{{"SideBar.SupportMistral" | translate}}</a>
+                                    </li>
+                                </ul>
+                                <div class="contactBar"></div>
+                            </div>
+                            <ul class="commercial"><span>{{"SideBar.TitreCommercial" | translate}}</span>
+                                <li>
+                                    <i class="fa fa-phone"></i>04.73.43.28.28
+                                </li>
+                                <li>04.73.43.28.38</li>
+                                <li>
+                                    <i class="fa fa-envelope"></i><a class="lienContact" href="mailto:info@mistral.fr">{{"SideBar.InfoMistral" | translate}}</a>
+                                </li>
+                                <li><a class="lienContact" href="mailto:admin@mistral.fr">{{"SideBar.MailAdminMistral" | translate}}</a>
+                                </li>
+                                <li><i class="fas fa-external-link-alt"></i><a class="lienContact" id="mistral" href="https://www.mistral.fr/" target="_blank">{{"SideBar.SiteMistral" | translate}}</a></li>
+                            </ul>
+                            <div class="contactSubBar"></div>
+                            <ul class="hotline"><span>{{"SideBar.TitreHotline" | translate}}</span>
+                                <li>
+                                    <i class="fa fa-phone"></i>04.73.43.28.28
+                                </li>
+                                <li>04.73.43.28.32</li>
+                            </ul>
+                            <div class="bandeau" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'">
+                                <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal theme image -->
+                <ng-template #modalTheme let-modal>
+                    <div class="modalTheme">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="titleTheme">Recette</h4>
+                        </div>
+                        <div type="button" class="closeTheme" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                        </div>
+                    </div>
+                    <div class="ApercuImage">
+                        <figure class="image">
+                            <img src="../../assets/image/ImageTheme/RecetteGalette.png" alt="">
+                        </figure>
+                    </div>
+                </ng-template>
+
+
+            </nav>
+        </div>
+        <!-- Sidebar  -->
+        <div *ngIf="currentuser && envir =='preprod' " [style.background-color]="'orange'">
+            <nav *ngIf="envir =='preprod' " id="sidebar" [style.background-color]="'orange'">
+                <div class="sidebar-header" *ngIf="envir =='preprod' " [style.background-color]="'orange'">
+
+                    <h2><img class="gifSaphir" [src]="retrievedImageM" alt="Image du logo" /></h2>
+                    <!-- <button (click)="testAcubench()">click</button>
+                    <p>{{cst}}</p> -->
+                </div>
+
+                <!-- Modal -->
+
+
+
+                <ul class="list-unstyled components" *ngIf="envir =='preprod' " [style.background-color]="'orange'">
+                    <li *ngIf="envir =='preprod' " [style.background-color]="'orange'">
+                        <a routerLink="/accueil">
+                            <i class="fa fa-home"></i> {{"SideBar.Accueil" | translate}}
+                        </a>
+
+                        <a href="#gestioncommerciale" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            Gestion Commerciale
+                        </a>
+
+
+                        <ul class="collapse list-unstyled ccc" id="gestioncommerciale">
+                            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" autofocus>
+                            <a href="#besemultiactivite" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                Base multi-activites
+                            </a>
+
+                            <ul class="collapse list-unstyled ddd" id="besemultiactivite">
+                                <li> <a href="#multisociete" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Fichiers Multi-societes</a>
+                                    <ul class="collapse list-unstyled eee" id="multisociete" *ngFor="let p of menu1 | filter: searchText">
+
+                                        <li>
+                                            <a [routerLink]="['/menu',p.pgm]">{{p.libelle}}</a>
+
+                                        </li>
+
+
+                                    </ul>
+
+
+                                </li>
+                                <li> <a href="#FSA" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Fichiers/Societe/Agence</a>
+                                    <ul class="collapse list-unstyled eee" id="FSA" *ngFor="let p of menuFSA | filter: searchText">
+
+                                        <li>
+                                            <a [routerLink]="['/menu',p.pgm]">{{p.libelle}}</a>
+
+                                        </li>
+
+
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <a href="#servicecommercial" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sercive commercial</a>
+                            <ul class="collapse list-unstyled ddd" id="servicecommercial">
+                                <li>
+                                    <a href="#fichiersspeccom" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Fichier specifique</a>
+                                    <ul class="collapse list-unstyled eee" id="fichiersspeccom" *ngFor="let p of menu2 | filter: searchText">
+                                        <li>
+                                            <a [routerLink]="['/menu',p.pgm]">{{p.libelle}}</a>
+
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                            <a href="#reparation" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Reparation-s.a.v</a>
+                            <ul class="collapse list-unstyled ddd" id="reparation">
+                                <li>
+                                    <a href="#fichierspecsav" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Fichiers Specifique</a>
+                                    <ul class="collapse list-unstyled eee" id="fichierspecsav" *ngFor="let p of menu3 | filter: searchText">
+                                        <li>
+                                            <a [routerLink]="['/menu',p.pgm]">{{p.libelle}}</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </ul>
+                        <a href="#comptabilitecamargue" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            Comptabilité Camargue
+                        </a>
+                        <ul class="collapse list-unstyled ccc" id="comptabilitecamargue">
+                            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText1" autofocus>
+                            <li>
+                                <a href="#fichiersb" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Fichiers de Base</a>
+                                <ul class="collapse list-unstyled ddd" id="fichiersb">
+                                    <li>
+                                        <a href="#">Donnees Multi-societes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#FD" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Fichiers / Dossiers</a>
+                                        <ul class="collapse list-unstyled eee" id="FD" *ngFor="let p of menu4 | filter: searchText1">
+                                            <li>
+                                                <a [routerLink]="['/menu',p.pgm]">{{p.libelle}}</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">Comptabilite Clients</a>
+                            </li>
+
+                        </ul>
+
+                        <a [routerLink]="['/menu','MENU']">
+                            <i class="fa fa-desktop"></i> {{"SideBar.Espace" | translate}}
+                        </a>
+                        <a href="" (click)="onNavigate()">
+                            <i class="fa fa-language"></i> {{"SideBar.Trad" | translate}}
+                        </a>
+                        <!-- <a routerLink="/parametre">
+                            <i class="fas fa-user"></i> 
+                        </a> -->
+                        <a href="#Administration" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-user"></i> {{"SideBar.Sub7" | translate}}
+                        </a>
+                        <ul class="collapse list-unstyled" id="Administration">
+                            <li>
+                                <a routerLink="/parametre">Gestion Des thèmes</a>
+                            </li>
+                            <li *ngIf="userInfos.admin">
+                                <a routerLink="/addUser">Gestion Utilisateur</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+                <p id="titreContact" data-target="#exampleModal" data-toggle="modal"><i class="fas fa-address-book"></i>{{"SideBar.OpenInfo" | translate}}</p>
+
+                <button class="btn-aide" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="open(modalAide)"><i
+                        class="fa fa-question-circle"></i>{{"SideBar.PageAide" | translate}}</button><br><br>
+                <!-- <button class="btn-aide" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'"><i
+                    class="fa fa-info-circle"></i>{{"SideBar.OpenInfo" | translate}}</button> -->
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="contactHeader">
+                                <div class="contactTitle">
+                                    <h5 id="h5Contact"> </h5>
+                                    <div type="button" class="closeContact" *ngIf="envir =='preprod' " [style.background-color]="'orange'" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                                    </div>
+                                </div>
+                                <ul class="commercial">
+                                    <li id="premiereLigne">
+
+                                        <a class="lienContact" id="supportMistral" target="_blank">Postgresql 12.3</a>
+                                    </li>
+                                </ul>
+                                <div class="contactBar"></div>
+                            </div>
+                            <ul class="commercial"><span>Backend & Frontend</span>
+                                <li>
+                                    Java 11.0.7
+                                </li>
+                                <li>
+                                    Spring boot 2.3.1</li>
+                                <li>
+                                    Angular 10.0
+                                </li>
+                                <li>Bootsrap 4.5.2
+                                </li>
+
+                            </ul>
+                            <div class="contactSubBar"></div>
+                            <ul *ngIf="userInfos.admin" class="hotline"><span>3G</span>
+                                <li>
+                                    DLRIX 5.2.0
+                                </li>
+
+                            </ul>
+                            <div *ngIf="!userInfos.admin" [style.marginTop.px]="269">
+                                <div class="bp" *ngIf="envir =='preprod' " [style.background-color]="'orange'">
+                                    <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                                </div>
+                            </div>
+                            <div *ngIf="userInfos.admin" [style.marginTop.px]="185">
+                                <div class="bp" *ngIf="envir =='preprod' " [style.background-color]="'orange'">
+                                    <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <p id="titreContact" data-target="#exampleModal1" data-toggle="modal"><i class="fas fa-address-book"></i>{{"SideBar.OpenContactUs" | translate}}</p>
+
+                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="contactHeader">
+                                <div class="contactTitle">
+                                    <h5 id="h5Contact">{{"SideBar.OpenContactUs" | translate}}</h5>
+                                    <div type="button" class="closeContact" *ngIf="envir =='preprod' " [style.background-color]="'orange'" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                                    </div>
+                                </div>
+                                <ul class="commercial">
+                                    <li id="premiereLigne">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <a class="lienContact" id="supportMistral" href="https://support.mistral.fr" target="_blank">{{"SideBar.SupportMistral" | translate}}</a>
+                                    </li>
+                                </ul>
+                                <div class="contactBar"></div>
+                            </div>
+                            <ul class="commercial"><span>{{"SideBar.TitreCommercial" | translate}}</span>
+                                <li>
+                                    <i class="fa fa-phone"></i>04.73.43.28.28
+                                </li>
+                                <li>04.73.43.28.38</li>
+                                <li>
+                                    <i class="fa fa-envelope"></i><a class="lienContact" href="mailto:info@mistral.fr">{{"SideBar.InfoMistral" | translate}}</a>
+                                </li>
+                                <li><a class="lienContact" href="mailto:admin@mistral.fr">{{"SideBar.MailAdminMistral" | translate}}</a>
+                                </li>
+                                <li><i class="fas fa-external-link-alt"></i><a class="lienContact" id="mistral" href="https://www.mistral.fr/" target="_blank">{{"SideBar.SiteMistral" | translate}}</a></li>
+                            </ul>
+                            <div class="contactSubBar"></div>
+                            <ul class="hotline"><span>{{"SideBar.TitreHotline" | translate}}</span>
+                                <li>
+                                    <i class="fa fa-phone"></i>04.73.43.28.28
+                                </li>
+                                <li>04.73.43.28.32</li>
+                            </ul>
+                            <div class="bandeau" *ngIf="envir =='preprod' " [style.background-color]="'orange'">
+                                <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+        <!-- Sidebar  -->
+        <div *ngIf="currentuser && envir =='test' " [style.background-color]="'grey'">
+            <nav *ngIf="envir =='test' " id="sidebar" [style.background-color]="'grey'">
+                <div class="sidebar-header" *ngIf="envir =='test' " [style.background-color]="'grey'">
+                    <h2><img class="gifSaphir" src="{{retrievedImageM}}" alt="Image du logo" /></h2>
+                    <!-- <button (click)="testAcubench()">click</button> -->
+                        
+                </div>
+
+                <!-- Modal -->
+
+
+
+                <ul class="list-unstyled components" *ngIf="envir =='test' " [style.background-color]="'grey'">
+                    <li *ngIf="envir =='test' " [style.background-color]="'grey'">
+                        <a routerLink="/accueil">
+                            <i class="fa fa-home"></i> {{"SideBar.Accueil" | translate}}
+                        </a>
+
+                      
+                       
+                        <a href="#Administration" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-user"></i> {{"SideBar.Sub7" | translate}}
+                        </a>
+                        <ul class="collapse list-unstyled" id="Administration">
+                            <li>
+                                <a routerLink="/parametre">Gestion Des thèmes</a>
+                            </li>
+                            <li *ngIf="userInfos.admin">
+                                <a routerLink="/addUser">Gestion Utilisateur</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+                <p id="titreContact" data-target="#exampleModal" data-toggle="modal"><i class="fas fa-address-book"></i>{{"SideBar.OpenInfo" | translate}}</p>
+
+                <button class="btn-aide" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="open(modalAide)"><i
+                        class="fa fa-question-circle"></i>{{"SideBar.PageAide" | translate}}</button><br><br>
+                <!-- <button class="btn-aide" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'"><i
+                    class="fa fa-info-circle"></i>{{"SideBar.OpenInfo" | translate}}</button> -->
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="contactHeader">
+                                <div class="contactTitle">
+                                    <h5 id="h5Contact"> </h5>
+                                    <div type="button" class="closeContact" *ngIf="envir =='test' " [style.background-color]="'grey'" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                                    </div>
+                                </div>
+                                <ul class="commercial">
+                                    <li id="premiereLigne">
+                                        <a class="lienContact" id="supportMistral" target="_blank">Postgresql 12.3</a>
+                                    </li>
+                                </ul>
+                                <div class="contactBar"></div>
+                            </div>
+                            <ul class="commercial"><span>Backend & Frontend</span>
+                                <li>
+                                    Java 11.0.7
+                                </li>
+                                <li>
+                                    Spring boot 2.3.1</li>
+                                <li>
+                                    Angular 10.0
+                                </li>
+                                <li>Bootsrap 4.5.2
+                                </li>
+                            </ul>
+                            <div class="contactSubBar"></div>
+                            <ul *ngIf="userInfos.admin" class="hotline"><span>3G</span>
+                                <li>
+                                    DLRIX 5.2.0
+                                </li>
+
+                            </ul>
+                            <div *ngIf="!userInfos.admin" [style.marginTop.px]="269">
+                                <div class="bp" *ngIf="envir =='test' " [style.background-color]="'grey'">
+                                    <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                                </div>
+                            </div>
+                            <div *ngIf="userInfos.admin" [style.marginTop.px]="185">
+                                <div class="bp" *ngIf="envir =='test' " [style.background-color]="'grey'">
+                                    <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <p id="titreContact" data-target="#exampleModal1" data-toggle="modal"><i class="fas fa-address-book"></i>{{"SideBar.OpenContactUs" | translate}}</p>
+
+                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="contactHeader">
+                                <div class="contactTitle">
+                                    <h5 id="h5Contact">{{"SideBar.OpenContactUs" | translate}}</h5>
+                                    <div type="button" class="closeContact" *ngIf="envir =='test' " [style.background-color]="'grey'" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                                    </div>
+                                </div>
+                                <ul class="commercial">
+                                    <li id="premiereLigne">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <a class="lienContact" id="supportMistral" href="https://support.mistral.fr" target="_blank">{{"SideBar.SupportMistral" | translate}}</a>
+                                    </li>
+                                </ul>
+                                <div class="contactBar"></div>
+                            </div>
+                            <ul class="commercial"><span>{{"SideBar.TitreCommercial" | translate}}</span>
+                                <li>
+                                    <i class="fa fa-phone"></i>04.73.43.28.28
+                                </li>
+                                <li>04.73.43.28.38</li>
+                                <li>
+                                    <i class="fa fa-envelope"></i><a class="lienContact" href="mailto:info@mistral.fr">{{"SideBar.InfoMistral" | translate}}</a>
+                                </li>
+                                <li><a class="lienContact" href="mailto:admin@mistral.fr">{{"SideBar.MailAdminMistral" | translate}}</a>
+                                </li>
+                                <li><i class="fas fa-external-link-alt"></i><a class="lienContact" id="mistral" href="https://www.mistral.fr/" target="_blank">{{"SideBar.SiteMistral" | translate}}</a></li>
+                            </ul>
+                            <div class="contactSubBar"></div>
+                            <ul class="hotline"><span>{{"SideBar.TitreHotline" | translate}}</span>
+                                <li>
+                                    <i class="fa fa-phone"></i>04.73.43.28.28
+                                </li>
+                                <li>04.73.43.28.32</li>
+                            </ul>
+                            <div class="bandeau" *ngIf="envir =='test' " [style.background-color]="'grey'">
+                                <img src="../../assets/image/mistralTransparent.png" alt="logo Mistral">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div *ngIf="currentuser">
+                <nav *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" class="navbar navbar-expand-lg navbar-dark ">
+
+                    <div class="container-fluid">
+                        <button [hidden]="!currentuser" type="button" id="sidebarCollapse" class="btn btn-infoo" (click)="openSidebar()">
+                            <i class="fas fa-thumbtack"></i>
+                        </button>
+                        <span class="envir" *ngIf="envir =='prod' ">{{"Login.Prod" | translate}}</span>
+                        <button class="btn btn-light d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-align-justify"></i>
+                        </button>
+                        <!-- <p class="titreacutoweb">{{cst}}</p> -->
+
+                        <!-- Décoration header sidebar -->
+                        <div class="theme">
+                            <img class="themeDeco" src="../../assets/image/ImageTheme/couronne1Small.png" alt="">
+                            <img class="themeDeco" src="../../assets/image/ImageTheme/galetteRoiSmall.png" alt="">
+                            <img class="themeDeco" src="../../assets/image/ImageTheme/couronne1Small.png" alt="">
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <ul *ngIf="currentuser" class="navbar-nav ml-auto">
+                                    <!-- <li *ngIf="userInfos.roles.includes('USER')" class="nav-item"> -->
+                                    <li class="nav-item">
+                                        <button class="nav-link btn-user" [innerHTML]="userInfos.name"></button>
+                                    </li>
+                                    <a href="#">
+                                        <div class="imgAvatar">
+                                            <img class="pst" src="{{retrievedImage}}" (click)="open(modalAvatar)" alt="Image de l'avatar">
+                                        </div>
+                                    </a>
+
+                                    <!-- Modal avatar -->
+                                    <ng-template #modalAvatar let-modal>
+                                        <div class="modalAvatar">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="titleAvatar">{{"SideBar.TitreModalAvatar" | translate}}</h5>
+                                            </div>
+                                            <div type="button" class="closeModal" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                                <i aria-hidden="true" class="fas fa-door-open"></i>{{"Commun.Quitter" | translate}}
+                                            </div>
+                                            <div type="button" class="btn closeModal" (click)="modal.close('Save click')">{{"Commun.Sauvegarder" | translate}}</div>
+                                        </div>
+
+                                        <form class="import md-form">
+                                            <div class="file-field">
+                                                <div class="input-group ">
+                                                    <div class="custom-file">
+                                                        <label class="file-label">
+                                                            <input class="inputfile file-path validate" id="inputGroupFile01" type="file" name="file" #fileInput (change)="onChangeAvatar(fileInput.files[0])"/>
+                                                            <label class="custom-file-label" for="inputGroupFile01">
+                                                                <span class="file-cta">
+                                                                    <span class="file-icon">{{ fileName }}<fa-icon id="iconUploadAvatar" [icon]="['fas', 'upload']"></fa-icon></span>
+                                                                </span>
+                                                            </label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="field" *ngIf="!infoMessage">
+                                                <div class="control">
+                                                    <progress class="progress is-primary" [attr.value]="progress" max="100"></progress>
+                                                </div>
+                                            </div> -->
+                                            <div class="field">
+                                                <div class="control">
+                                                    <button class="btnUploadImg button is-primary" (click)="onUploadAvatar()">{{"Commun.Telecharger" | translate}}</button>
+                                                </div>
+                                            </div>
+                                            <article class="message" *ngIf="infoMessage">
+                                                <div class="alert-success">{{ infoMessage }}</div>
+                                            </article>
+                                            <div class="ApercuImage">
+                                                <figure class="image is-128x128">
+                                                    <img src="{{retrievedImage}}" alt="Image de l'avatar" />
+                                                </figure>
+                                            </div>
+                                        </form>
+                                    </ng-template>
+
+                                    <li class="nav-item">
+                                        <button (click)="logout()" class="nav-link btn-logout"> <i
+                                                class="fa fa-fw fa-power-off icon-logout"></i> </button>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <router-outlet></router-outlet>
+
+
+            <div *ngIf="currentuser">
+                <nav *ngIf="envir =='preprod' " [style.background-color]="'orange'" class="navbar navbar-expand-lg navbar-dark ">
+
+                    <div class="container-fluid">
+                        <button [hidden]="!currentuser" type="button" id="sidebarCollapse" class="btn btn-infoo" (click)="openSidebar()">
+                            <i class="fas fa-thumbtack"></i>
+                        </button>
+                        <span class="envir" *ngIf="envir =='preprod' ">{{"Login.Jeu" | translate}}</span>
+                        <button class="btn btn-light d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-align-justify"></i>
+                        </button>
+
+
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <ul *ngIf="currentuser" class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <button class="nav-link btn-user" [innerHTML]="userInfos.name"></button>
+                                    </li>
+                                    <a href="#">
+                                        <div class="imgAvatar">
+                                            <img class="pst" src="{{retrievedImage}}" alt="photo de profil">
+                                        </div>
+                                    </a>
+                                    <li class="nav-item">
+                                        <button (click)="logout()" class="nav-link btn-logout"> <i
+                                                class="fa fa-fw fa-power-off icon-logout"></i> </button>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <router-outlet></router-outlet>
+
+
+            <div *ngIf="currentuser">
+                <nav *ngIf="envir =='test' " [style.background-color]="'grey'" class="navbar navbar-expand-lg navbar-dark ">
+
+                    <div class="container-fluid">
+                        <button [hidden]="!currentuser" type="button" id="sidebarCollapse" class="btn btn-infoo" (click)="openSidebar()">
+                            <i class="fas fa-thumbtack"></i>
+                        </button>
+                        <span class="envir" *ngIf="envir =='test' ">{{"Login.Archive" | translate}}</span>
+                        <button class="btn btn-light d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-align-justify"></i>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <ul *ngIf="currentuser" class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <button class="nav-link btn-user" [innerHTML]="userInfos.name"></button>
+                                    </li>
+                                    <a href="#" class="imgAvatarLink">
+                                        <div class="imgAvatar">
+                                            <img class="pst" src="{{retrievedImage}}" alt="photo de profil">
+                                        </div>
+                                    </a>
+                                    <li class="nav-item">
+                                        <button (click)="logout()" class="nav-link btn-logout"> <i
+                                                class="fa fa-fw fa-power-off icon-logout"></i> </button>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div *ngIf="currentuser">
+
+                <div class="galon galon-societe" [style.background-color]="getColor1()"></div>
+
+                 <div class="galon galon-agence text-center" [style.background-color]="getColor2()">
+                    <i class="fas fa-home"></i>
+
+
+                </div> 
+            </div>
+            <p></p>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <!-- Modal Aide -->
+    <ng-template #modalAide let-modal>
+        <div class="modal-headerAide">
+            <h4 class="modal-title" id="modal-basic-title">{{"SideBar.OpenAide" | translate}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-headerAide">
+            <div class="modal-body">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+        </div>
+    </ng-template>
+
+    <footer *ngIf="currentuser" id="sticky-footer" class="text-black-50 color">
+        <div class="msgFooter text-center">
+            <small>{{"SideBar.Copyright" | translate}}</small>
+        </div>
+        <div class="msgFooter text-center">
+            <small>Version 1.1.0</small>
+        </div>
+    </footer>
+</body>
+
+</html>

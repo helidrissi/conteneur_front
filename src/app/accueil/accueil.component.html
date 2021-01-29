@@ -1,0 +1,534 @@
+<div class="content">
+    <div class="logo"><img src="../../assets/image/mistral2.png" alt="Logo de Mistral" id="logoMistral"></div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+
+                <!-- btn upload img -->
+                <form class="import md-form">
+                    <button (click)="Show1()" class="btnAddImg">Ajouter une image</button>
+                    <!-- Upload img -->
+                    <div *ngIf="show1">
+                        <div class="file-field">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input class="inputfile file-path validate" id="inputGroupFile01" type="file" name="file1" #fileInput1 (change)="onChange1(fileInput1.files[0])" />
+                                    <label class="custom-file-label" for="inputGroupFile01">
+                                        <span class="file-cta">
+                                            <span class="file-icon">{{ fileName }}<fa-icon id="iconUpload" [icon]="['fas', 'upload']"></fa-icon></span>
+                                        </span>
+                                    </label> >
+                                </div>
+
+                            </div>
+
+                            <article class="message" *ngIf="infoMessage">
+                                <div class="alert-success">{{ infoMessage }}</div>
+                            </article>
+
+                            <!-- <div class="field" *ngIf="!infoMessage">
+                                <div class="control">
+                                    <progress class="progress is-primary" [attr.value]="progress" max="100"></progress>
+                                </div>
+                            </div> -->
+
+                            <div class="field">
+                                <div class="control">
+                                    <button class="btnUploadImg is-primary" (click)="onUpload1()">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <img class="d-block w-100" src="{{retrievedImage1}}" alt="image" (click)="zoomCarousel()">
+            </div>
+            <div class="carousel-item">
+                <form class="import md-form">
+                    <button (click)="Show2()" class="btnAddImg">Ajouter une image</button>
+                    <!-- Upload img -->
+                    <div *ngIf="show2">
+                        <div class="file-field">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input class="inputfile file-path validate" id="inputGroupFile01" type="file" name="file2" #fileInput2 (change)="onChange2(fileInput2.files[0])" />
+                                    <label class="custom-file-label" for="inputGroupFile01">
+                                        <span class="file-cta">
+                                            <span class="file-icon">{{ fileName }}<fa-icon id="iconUpload" [icon]="['fas', 'upload']"></fa-icon></span>
+                                        </span>
+                                    </label> >
+                                </div>
+
+                            </div>
+
+                            <article class="message" *ngIf="infoMessage">
+                                <div class="alert-success">{{ infoMessage }}</div>
+                            </article>
+
+                            <!-- <div class="field" *ngIf="!infoMessage">
+                                <div class="control">
+                                    <progress class="progress is-primary" [attr.value]="progress" max="100"></progress>
+                                </div>
+                            </div> -->
+
+                            <div class="field">
+                                <div class="control">
+                                    <button class="btnUploadImg is-primary" (click)="onUpload2()">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <img class="d-block w-100" src="{{retrievedImage2}}" alt="image" (click)="zoomCarousel()">
+
+            </div>
+            <div class="carousel-item">
+                <form class="import md-form">
+                    <button (click)="Show3()" class="btnAddImg">Ajouter une image</button>
+                    <!-- Upload img -->
+                    <div *ngIf="show3">
+                        <div class="file-field">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input class="inputfile file-path validate" id="inputGroupFile01" type="file" name="file2" #fileInput2 (change)="onChange3(fileInput2.files[0])" />
+                                    <label class="custom-file-label" for="inputGroupFile01">
+                                        <span class="file-cta">
+                                            <span class="file-icon">{{ fileName }}<fa-icon id="iconUpload" [icon]="['fas', 'upload']"></fa-icon></span>
+                                        </span>
+                                    </label> >
+                                </div>
+
+                            </div>
+
+                            <article class="message" *ngIf="infoMessage">
+                                <div class="alert-success">{{ infoMessage }}</div>
+                            </article>
+
+                            <!-- <div class="field" *ngIf="!infoMessage">
+                                <div class="control">
+                                    <progress class="progress is-primary" [attr.value]="progress" max="100"></progress>
+                                </div>
+                            </div> -->
+
+                            <div class="field">
+                                <div class="control">
+                                    <button class="btnUploadImg is-primary" (click)="onUpload3()">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <img class="d-block w-100" src="{{retrievedImage3}}" alt="image" (click)="zoomCarousel()">
+
+            </div>
+            <div class="carousel-item">
+                <form class="import md-form">
+                    <button (click)="Show4()" class="btnAddImg">Ajouter une image</button>
+                    <!-- Upload img -->
+                    <div *ngIf="show4">
+                        <div class="file-field">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input class="inputfile file-path validate" id="inputGroupFile01" type="file" name="file2" #fileInput2 (change)="onChange4(fileInput2.files[0])" />
+                                    <label class="custom-file-label" for="inputGroupFile01">
+                                        <span class="file-cta">
+                                            <span class="file-icon">{{ fileName }}<fa-icon id="iconUpload" [icon]="['fas', 'upload']"></fa-icon></span>
+                                        </span>
+                                    </label> >
+                                </div>
+
+                            </div>
+
+                            <article class="message" *ngIf="infoMessage">
+                                <div class="alert-success">{{ infoMessage }}</div>
+                            </article>
+
+                            <!-- <div class="field" *ngIf="!infoMessage">
+                                <div class="control">
+                                    <progress class="progress is-primary" [attr.value]="progress" max="100"></progress>
+                                </div>
+                            </div> -->
+
+                            <div class="field">
+                                <div class="control">
+                                    <button class="btnUploadImg is-primary" (click)="onUpload4()">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <img class="d-block w-100" src="{{retrievedImage4}}" alt="image" (click)="zoomCarousel()">
+
+            </div>
+            <div class="carousel-item">
+                <form class="import md-form">
+                    <button (click)="Show5()" class="btnAddImg">Ajouter une image</button>
+                    <!-- Upload img -->
+                    <div *ngIf="show5">
+                        <div class="file-field">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input class="inputfile file-path validate" id="inputGroupFile01" type="file" name="file2" #fileInput2 (change)="onChange5(fileInput2.files[0])" />
+                                    <label class="custom-file-label" for="inputGroupFile01">
+                                        <span class="file-cta">
+                                            <span class="file-icon">{{ fileName }}<fa-icon id="iconUpload" [icon]="['fas', 'upload']"></fa-icon></span>
+                                        </span>
+                                    </label> >
+                                </div>
+
+                            </div>
+
+                            <article class="message" *ngIf="infoMessage">
+                                <div class="alert-success">{{ infoMessage }}</div>
+                            </article>
+
+                            <!-- <div class="field" *ngIf="!infoMessage">
+                                <div class="control">
+                                    <progress class="progress is-primary" [attr.value]="progress" max="100"></progress>
+                                </div>
+                            </div> -->
+
+                            <div class="field">
+                                <div class="control">
+                                    <button class="btnUploadImg is-primary" (click)="onUpload5()">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <img class="d-block w-100" src="{{retrievedImage5}}" alt="image" (click)="zoomCarousel()">
+
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="cards">
+        <div id="card0" class="card" style="width: 35rem;">
+            <img class="card-img-top" src="../../assets/image/portMask.jpg" alt="Port du masque">
+            <ng-scrollbar *ngIf="envir == 'prod'" [style.--scrollbar-thumb-color]="'#0c2a77'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">Régles sanitaire du Covid</h4>
+                    <div class="card-text" id='news1'>
+                        <p>Dans le cadre de la prévention de la propagation du coronavirus Covid-19 et dans le contexte actuel de situation sanitaire faisant face à un risque qui subsiste, nous sommes amenés à renforcer les mesures de prévention qui ont
+                            été déployées chez Mistral depuis plusieurs mois.</p>
+
+                        <h5>Les mesures en vigueur sont maintenues :</h5>
+                        <ol>
+                            <li>Maintien de l’ensemble des portes bureaux/salles de réunion ouvertes (hors-mis exceptions temporaires de confidentialité)</li>
+                            <li>Aération des salles recommandée toute les 3 heures (bureaux individuels, collectifs et salles de réunions)</li>
+                            <li>Postes de désinfection aux portes d’accès aux locaux, en cafétéria et à l’accueil : obligatoire lors de toute entrée dans les locaux</li>
+                            <li>Désinfection systématique et obligatoire des appareils électro-ménagers et tables dans la cafétéria au gel hydroalcoolique après toute utilisation</li>
+                            <li>Désinfection journalière des zones de contact : poignées, appareils électro-ménagers, écrans tactiles…</li>
+                            <li>Respect des règles de distanciation physique (au moins 1 mètre) et lavage régulier des mains au cours de la journée</li>
+                        </ol>
+                        <h5>Depuis le 1er Septembre, en complément, la règle de port du masque est obligatoire :</h5>
+                        <ul>
+                            <li> dans tous les espaces communs de l’immeuble (entrée, ascenseur, escaliers, palier…) </li>
+                            <li> dans les espaces communs des locaux Mistral (accueil,salles de réunions, couloirs, espaces de déambulation des « open-spaces », cafétéria, escaliers inter-étages, toilettes) </li>
+                            <li> dans les « open-spaces » et bureau collectifs dont les espaces individuels sont non-cloisonnés</li>
+                        </ul>
+                    </div>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'preprod'" [style.--scrollbar-thumb-color]="'orange'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">Régles sanitaire du Covid</h4>
+                    <div class="card-text" id='news1'>
+                        <p>Dans le cadre de la prévention de la propagation du coronavirus Covid-19 et dans le contexte actuel de situation sanitaire faisant face à un risque qui subsiste, nous sommes amenés à renforcer les mesures de prévention qui ont
+                            été déployées chez Mistral depuis plusieurs mois.</p>
+
+                        <h5>Les mesures en vigueur sont maintenues :</h5>
+                        <ol>
+                            <li>Maintien de l’ensemble des portes bureaux/salles de réunion ouvertes (hors-mis exceptions temporaires de confidentialité)</li>
+                            <li>Aération des salles recommandée toute les 3 heures (bureaux individuels, collectifs et salles de réunions)</li>
+                            <li>Postes de désinfection aux portes d’accès aux locaux, en cafétéria et à l’accueil : obligatoire lors de toute entrée dans les locaux</li>
+                            <li>Désinfection systématique et obligatoire des appareils électro-ménagers et tables dans la cafétéria au gel hydroalcoolique après toute utilisation</li>
+                            <li>Désinfection journalière des zones de contact : poignées, appareils électro-ménagers, écrans tactiles…</li>
+                            <li>Respect des règles de distanciation physique (au moins 1 mètre) et lavage régulier des mains au cours de la journée</li>
+                        </ol>
+                        <h5>Depuis le 1er Septembre, en complément, la règle de port du masque est obligatoire :</h5>
+                        <ul>
+                            <li> dans tous les espaces communs de l’immeuble (entrée, ascenseur, escaliers, palier…) </li>
+                            <li> dans les espaces communs des locaux Mistral (accueil,salles de réunions, couloirs, espaces de déambulation des « open-spaces », cafétéria, escaliers inter-étages, toilettes) </li>
+                            <li> dans les « open-spaces » et bureau collectifs dont les espaces individuels sont non-cloisonnés</li>
+                        </ul>
+                    </div>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'test'" [style.--scrollbar-thumb-color]="'grey'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">Régles sanitaire du Covid</h4>
+                    <div class="card-text" id='news1'>
+                        <p>Dans le cadre de la prévention de la propagation du coronavirus Covid-19 et dans le contexte actuel de situation sanitaire faisant face à un risque qui subsiste, nous sommes amenés à renforcer les mesures de prévention qui ont
+                            été déployées chez Mistral depuis plusieurs mois.</p>
+
+                        <h5>Les mesures en vigueur sont maintenues :</h5>
+                        <ol>
+                            <li>Maintien de l’ensemble des portes bureaux/salles de réunion ouvertes (hors-mis exceptions temporaires de confidentialité)</li>
+                            <li>Aération des salles recommandée toute les 3 heures (bureaux individuels, collectifs et salles de réunions)</li>
+                            <li>Postes de désinfection aux portes d’accès aux locaux, en cafétéria et à l’accueil : obligatoire lors de toute entrée dans les locaux</li>
+                            <li>Désinfection systématique et obligatoire des appareils électro-ménagers et tables dans la cafétéria au gel hydroalcoolique après toute utilisation</li>
+                            <li>Désinfection journalière des zones de contact : poignées, appareils électro-ménagers, écrans tactiles…</li>
+                            <li>Respect des règles de distanciation physique (au moins 1 mètre) et lavage régulier des mains au cours de la journée</li>
+                        </ol>
+                        <h5>Depuis le 1er Septembre, en complément, la règle de port du masque est obligatoire :</h5>
+                        <ul>
+                            <li> dans tous les espaces communs de l’immeuble (entrée, ascenseur, escaliers, palier…) </li>
+                            <li> dans les espaces communs des locaux Mistral (accueil,salles de réunions, couloirs, espaces de déambulation des « open-spaces », cafétéria, escaliers inter-étages, toilettes) </li>
+                            <li> dans les « open-spaces » et bureau collectifs dont les espaces individuels sont non-cloisonnés</li>
+                        </ul>
+                    </div>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus1" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news1', 'plus1', 'moins1')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins1" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news1', 'plus1', 'moins1')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+        </div>
+        <div id="card1" class="card" style="width: 35rem;">
+            <img class="card-img-top" src="../../assets/image/mobivip.png" alt="Logo MobiVip">
+            <ng-scrollbar *ngIf="envir == 'prod'" [style.--scrollbar-thumb-color]="'#0c2a77'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">Nouvelle version MobiVip TAB V2.1 iOS</h4>
+                    <div class="card-text" id='news2'>
+                        <p>Pour cette nouvelle version, Mistral à entièrement repensé l’ergonomie et l’interface de l’application et apporté des améliorations fonctionnelles majeures pour mieux répondre à vos attentes et aux spécificités de votre activité
+                            :
+                        </p>
+                        <ol>
+                            <li>Mise en place d’un système de gestion dédié par activité : Vente matériels, Distribution, Location</li>
+                            <li>Création de nouveaux modules spécifiques à l’activité Location tels que la gestion des rapports d’activité commerciale, la création et la gestion des offres et devis, l’analyse de l’activité commerciale</li>
+                            <li>Mise en place d’un nouveau module dédié à la consultation des informations fournisseurs</li>
+                            <li>Ajout des fonctions de gestion des chantiers dans le module Clients/Prospect</li>
+                        </ol>
+                        <p>MobiVip TAB iOS V2.1 a également été enrichie de nombreuses autres nouvelles fonctionnalités :</p>
+                        <ol>
+                            <li>Possibilité d’effectuer des planifications de tournées par chantier</li>
+                            <li>Possibilité de consulter les matériels en parc de location dans le stock occasion</li>
+                            <li>Ajout du support des PDF et des fichiers texte dans les documents attachés aux matériels</li>
+                            <li>Ajout de la possibilité d’afficher la désignation du matériel dans le stock</li>
+                            <li>Possibilité de clôturer un devis avec statut de l’affaire : gagné, perdu…</li>
+                            <li>Possibilité de prendre des photos lors de la saisie des devis</li>
+                            <li>Possibilité de dupliquer des devis</li>
+                            <li>Ajout de la gestion des frais de facturation dans les devis</li>
+                            <li>Gestion des profils techniques en fonction de la famille/catégorie des matériels</li>
+                            <li>Nombreuses nouvelles fonctionnalités du module « Notes de frais » : préférences, changement de véhicule, éditions des frais hebdomadaires…</li>
+                            <li>...</li>
+                        </ol>
+                    </div>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'preprod'" [style.--scrollbar-thumb-color]="'orange'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">Nouvelle version MobiVip TAB V2.1 iOS</h4>
+                    <div class="card-text" id='news2'>
+                        <p>Pour cette nouvelle version, Mistral à entièrement repensé l’ergonomie et l’interface de l’application et apporté des améliorations fonctionnelles majeures pour mieux répondre à vos attentes et aux spécificités de votre activité
+                            :
+                        </p>
+                        <ol>
+                            <li>Mise en place d’un système de gestion dédié par activité : Vente matériels, Distribution, Location</li>
+                            <li>Création de nouveaux modules spécifiques à l’activité Location tels que la gestion des rapports d’activité commerciale, la création et la gestion des offres et devis, l’analyse de l’activité commerciale</li>
+                            <li>Mise en place d’un nouveau module dédié à la consultation des informations fournisseurs</li>
+                            <li>Ajout des fonctions de gestion des chantiers dans le module Clients/Prospect</li>
+                        </ol>
+                        <p>MobiVip TAB iOS V2.1 a également été enrichie de nombreuses autres nouvelles fonctionnalités :</p>
+                        <ol>
+                            <li>Possibilité d’effectuer des planifications de tournées par chantier</li>
+                            <li>Possibilité de consulter les matériels en parc de location dans le stock occasion</li>
+                            <li>Ajout du support des PDF et des fichiers texte dans les documents attachés aux matériels</li>
+                            <li>Ajout de la possibilité d’afficher la désignation du matériel dans le stock</li>
+                            <li>Possibilité de clôturer un devis avec statut de l’affaire : gagné, perdu…</li>
+                            <li>Possibilité de prendre des photos lors de la saisie des devis</li>
+                            <li>Possibilité de dupliquer des devis</li>
+                            <li>Ajout de la gestion des frais de facturation dans les devis</li>
+                            <li>Gestion des profils techniques en fonction de la famille/catégorie des matériels</li>
+                            <li>Nombreuses nouvelles fonctionnalités du module « Notes de frais » : préférences, changement de véhicule, éditions des frais hebdomadaires…</li>
+                            <li>...</li>
+                        </ol>
+                    </div>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'test'" [style.--scrollbar-thumb-color]="'grey'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">Nouvelle version MobiVip TAB V2.1 iOS</h4>
+                    <div class="card-text" id='news2'>
+                        <p>Pour cette nouvelle version, Mistral à entièrement repensé l’ergonomie et l’interface de l’application et apporté des améliorations fonctionnelles majeures pour mieux répondre à vos attentes et aux spécificités de votre activité
+                            :
+                        </p>
+                        <ol>
+                            <li>Mise en place d’un système de gestion dédié par activité : Vente matériels, Distribution, Location</li>
+                            <li>Création de nouveaux modules spécifiques à l’activité Location tels que la gestion des rapports d’activité commerciale, la création et la gestion des offres et devis, l’analyse de l’activité commerciale</li>
+                            <li>Mise en place d’un nouveau module dédié à la consultation des informations fournisseurs</li>
+                            <li>Ajout des fonctions de gestion des chantiers dans le module Clients/Prospect</li>
+                        </ol>
+                        <p>MobiVip TAB iOS V2.1 a également été enrichie de nombreuses autres nouvelles fonctionnalités :</p>
+                        <ol>
+                            <li>Possibilité d’effectuer des planifications de tournées par chantier</li>
+                            <li>Possibilité de consulter les matériels en parc de location dans le stock occasion</li>
+                            <li>Ajout du support des PDF et des fichiers texte dans les documents attachés aux matériels</li>
+                            <li>Ajout de la possibilité d’afficher la désignation du matériel dans le stock</li>
+                            <li>Possibilité de clôturer un devis avec statut de l’affaire : gagné, perdu…</li>
+                            <li>Possibilité de prendre des photos lors de la saisie des devis</li>
+                            <li>Possibilité de dupliquer des devis</li>
+                            <li>Ajout de la gestion des frais de facturation dans les devis</li>
+                            <li>Gestion des profils techniques en fonction de la famille/catégorie des matériels</li>
+                            <li>Nombreuses nouvelles fonctionnalités du module « Notes de frais » : préférences, changement de véhicule, éditions des frais hebdomadaires…</li>
+                            <li>...</li>
+                        </ol>
+                    </div>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus2" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news2', 'plus2', 'moins2')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins2" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news2', 'plus2', 'moins2')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+        </div>
+        <div id="card2" class="card" style="width: 35rem;">
+            <img class="card-img-top" src="../../assets/image/laMontagne.png" alt="Logo journal la Montagne">
+            <ng-scrollbar *ngIf="envir == 'prod'" [style.--scrollbar-thumb-color]="'#0c2a77'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">La montagne</h4>
+                    <div class="card-text" id='news3'>
+                        <p>"La montagne" bientôt ici</p>
+                    </div>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'preprod'" [style.--scrollbar-thumb-color]="'orange'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">La montagne</h4>
+                    <div class="card-text" id='news3'>
+                        <p>"La montagne" bientôt ici</p>
+                    </div>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'test'" [style.--scrollbar-thumb-color]="'grey'" class="accueil">
+                <div class="card-body">
+                    <h4 class="card-title">La montagne</h4>
+                    <div class="card-text" id='news3'>
+                        <p>"La montagne" bientôt ici</p>
+                    </div>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus3" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news3', 'plus3', 'moins3')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins3" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news3', 'plus3', 'moins3')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+        </div>
+        <div id="card3" class="card" style="width: 35rem;">
+            <div class="card-body">
+                <h5 class="card-title">Que porter dans les prochains jours ?</h5>
+                <div id='news4'>
+                    <iframe id="widget_autocomplete_preview" src="http://meteofrance.com/widget/prevision/631130" title="widget météo"></iframe>
+                </div>
+            </div>
+        </div>
+        <div id="card4" class="card" style="width: 35rem;">
+            <img class="card-img-top" src="../../assets/image/anniv.png" alt="Image anniversaire">
+            <ng-scrollbar *ngIf="envir == 'prod'" [style.--scrollbar-thumb-color]="'#0c2a77'" class="accueil">
+
+                <div class="card-body">
+                    <h4 class="card-title">Anniversaire</h4>
+                    <div class="card-text" id='news5'>
+                        <p>Aucun anniversaire</p>
+                    </div>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'preprod'" [style.--scrollbar-thumb-color]="'orange'" class="accueil">
+
+                <div class="card-body">
+                    <h4 class="card-title">Anniversaire</h4>
+                    <div class="card-text" id='news5'>
+                        <p>Aucun anniversaire</p>
+                    </div>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+            <ng-scrollbar *ngIf="envir == 'test'" [style.--scrollbar-thumb-color]="'grey'" class="accueil">
+
+                <div class="card-body">
+                    <h4 class="card-title">Anniversaire</h4>
+                    <div class="card-text" id='news5'>
+                        <p>Aucun anniversaire</p>
+                    </div>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='prod' " [style.background-color]="'#0c2a77'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='preprod' " [style.background-color]="'orange'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                    <button id="plus5" class="btnDeployer" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="deployer('news5', 'plus5', 'moins5')">{{ "Accueil.Plus" | translate}}</button>
+                    <button id="moins5" class="btnCacher" *ngIf="envir =='test' " [style.background-color]="'grey'" (click)="cacher('news5', 'plus5', 'moins5')">{{ "Accueil.Moins" | translate}}</button>
+                </div>
+            </ng-scrollbar>
+        </div>
+    </div>
+</div>
+<button *ngIf="userInfos.admin && envir =='prod'" [style.background-color]="'#0c2a77'" id="save" (click)="saveBtn()"><i class="fas fa-save"></i>{{ "Commun.Sauvegarder" | translate}}</button>
+<button *ngIf="userInfos.admin && envir =='preprod'" [style.background-color]="'orange'" id="save" (click)="saveBtn()"><i class="fas fa-save"></i>{{ "Commun.Sauvegarder" | translate}}</button>
+<button *ngIf="userInfos.admin && envir =='test'" [style.background-color]="'grey'" id="save" (click)="saveBtn()"><i class="fas fa-save"></i>{{ "Commun.Sauvegarder" | translate}}</button>
